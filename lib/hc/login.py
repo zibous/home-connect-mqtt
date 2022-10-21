@@ -53,8 +53,10 @@ except Exception as e:
 def b64(b):
     return re.sub(r'=', '', base64url_encode(b).decode('UTF-8'))
 
+
 def b64random(num):
     return b64(base64url_encode(get_random_bytes(num)))
+
 
 def getConfig(brand, connection) -> bool:
     """ get the devices config for the defined brand """
@@ -68,15 +70,14 @@ def getConfig(brand, connection) -> bool:
         _filename = "{}{}/{}".format(app_config.CONIG_DIR, brand, app_config.DEVICES_FILENAME)
 
         if os.path.isfile(_filename):
-            log.info("config file {} present. Skip get config from cloud!".format(_filename))
-
             if "testcase" in connection:
-                log.debug("Testcase enabled")
+                log.debug("Testcase enabled, try to get the devices data")
             else:
+                log.info("config file {} present. Skip get config from cloud!".format(_filename))
                 return True
-                
+
         _debugMode = False
-        if app_config.APPS_MODE == "developer":            
+        if app_config.APPS_MODE == "developer":
             _debugMode = True
 
         # try to get the configuration from the bosch service
@@ -252,7 +253,7 @@ def getConfig(brand, connection) -> bool:
             # convert xml settings to json
             machine = xml2json(features, description)
 
-            if _debugMode:                
+            if _debugMode:
                 _filename = "{}{}/{}/machine.json".format(app_config.CONIG_DIR, brand, app_type.lower())
                 if utils.savefile(machine, _filename):
                     log.debug("Save account data to:{}".format(_filename))
