@@ -46,8 +46,6 @@ To match personal needs, all operation details can be configured using the file 
 
 <br>
 
-<details>
-<summary>Device configuration</summary>
 
 ```yaml
 DEVICES = {
@@ -78,45 +76,18 @@ DEVICES = {
     }
 }
 ```
-</details>
 <br>
 All others are optional.
 
 <br>
 
-## Testcase Authenticate to the cloud servers
+## Testcase 
 
-The hc-login script perfoms the OAuth process to login to your Home Connect account with your usename and password. 
+The section `testcase` holds simple testcases for:
 
-```bash
- ⚡ > cd /app/home-connect-mqtt/test
- ⚡ > python3 ha-login.py
-```
-
-It receives a bearer token that can then be used to retrieves a list of all the connected devices, 
-their authentication and encryption keys, and XML files that describe all of the features and options.
-
-This only needs to be done once or when you add new devices; the resulting configuration JSON file 
-should be sufficient to connect to the devices on your local network, 
-assuming that your mDNS or DNS server resolves the names correctly.
-
-## Testcase Home Connect to HA Disccovery
-
-```bash
- ⚡ > cd /app/home-connect-mqtt/test
- ⚡ > python3 ha-discovery.py
-```
-
-## Testcase Home Connect to MQTT
-
-This tool will establish websockets to the local devices and transform their messages into MQTT JSON messages. 
-
-```bash
- ⚡ > cd /app/home-connect-mqtt/test
- ⚡ > python3 ha-mqtt.py
-```
-
-The exact format is likely to change; it is currently a thin translation layer over the XML retrieved from cloud servers during the initial configuration.
+  - Login Home Connect appliances to get the devices settings
+  - Homeassistant MQTT Discovery Service
+  - Testcase MQTT for the registrated Devices
 
 ## Run the python application
 
