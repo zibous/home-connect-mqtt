@@ -1,0 +1,120 @@
+# --------------------------------------------
+# payload for 1st binary sensors
+# --------------------------------------------
+binary_sensor_device:
+  '~': tele/bosch-dishwasher
+  uniq_id:
+  name:
+  stat_t: ~/status
+  val_tpl: ''
+  state_class: ''
+  unit_of_meas: ''
+  payload_on: ''
+  payload_off: ''
+  ic: ''
+  dev:
+    ids:
+      - BOSCH-DISCHWASHER
+    name: Bosch Geschirrspüler
+    mf: Bosch
+    mdl: Geschirrspüler SMV4HCX48E/24
+    sa: 'Küche'
+    sw: 8342.0.120554
+    via_device: bosch-dishwasher
+
+binary_sensor:
+  # --------------------------------------------
+  # payload for all other binary sensors
+  # --------------------------------------------
+  '~': tele/bosch-dishwasher
+  uniq_id:
+  name:
+  stat_t: ~/status
+  val_tpl:
+  payload_on: ''
+  payload_off: ''
+  state_class: ''
+  unit_of_meas: ''
+  ic: ''
+  dev:
+    ids:
+      - BOSCH-DISCHWASHER
+
+sensor_device:
+  # ------------------------------------------
+  # payload for the 1st sensor with device
+  # tele/bosch-dishwasher/status
+  # -------------------------------------------
+  '~': tele/bosch-dishwasher
+  uniq_id: ''
+  name: ''
+  stat_t: ~/status
+  val_tpl:
+  ic: ''
+  state_class: ''
+  unit_of_meas: ''
+  sa: 'Küche'
+  dev:
+    ids:
+      - BOSCH-DISCHWASHER
+    name: Bosch Geschirrspüler
+    mf: Bosch
+    mdl: Geschirrspüler SMV4HCX48E/24
+    sa: 'Küche'
+    sw: 8342.0.120554
+    via_device: bosch-dishwasher
+
+sensor:
+  # --------------------------------------------
+  # payload for all other sensors
+  # --------------------------------------------
+  '~': tele/bosch-dishwasher
+  uniq_id: ''
+  name:
+  stat_t: ~/status
+  val_tpl:
+  state_class: ''
+  unit_of_meas: ''
+  ic: ''
+  dev:
+    ids:
+      - BOSCH-DISCHWASHER
+
+number:
+  '~': tele/bosch-dishwasher
+  command_topic:
+  min: 0
+  max: 255
+  step: 1
+  ic:
+  stat_t: ''
+  val_tpl: '{{value_json.selflowtemp}}'
+  unit_of_meas: ''
+  dev:
+    ids:
+      - BOSCH-DISCHWASHER
+
+select:
+  '~': tele/bosch-dishwasher
+  command_topic: '~/boiler/wwcomfort'
+  options:
+    - Heiß
+    - Eco
+    - Intelligent
+  stat_t: '~/boiler_data_ww'
+  val_tpl: '{{value_json.wwcomfort}}'
+  dev:
+    ids:
+      - BOSCH-DISCHWASHER
+
+switch:
+  '~': tele/bosch-dishwasher
+  command_topic: '~/boiler/wwcircpump'
+  stat_t: '~/boiler_data_ww'
+  val_tpl: '{{value_json.wwcircpump}}'
+  payload_on: ''
+  payload_off: ''
+  state_class: measurement
+  dev:
+    ids:
+      - BOSCH-DISCHWASHER

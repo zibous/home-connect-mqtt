@@ -1,0 +1,15 @@
+{
+    "~": "tele/bosch-dishwasher",
+    "uniq_id": "bosch_dishwasher_totalrunning",
+    "name": "BOSCH Spüler Betriebszeit",
+    "stat_t": "~/heartbeat",
+    "val_tpl": "{{value_json.totalrunning}}",
+    "dev": {
+        "ids": [
+            "BOSCH-DISCHWASHER"
+        ]
+    },
+    "object_id": "bosch_bosch_dishwasher.totalrunning",
+    "ent_cat": "diagnostic",
+    "device_class": "duration"
+}

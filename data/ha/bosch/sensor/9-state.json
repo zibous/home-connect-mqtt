@@ -1,0 +1,20 @@
+{
+    "~": "tele/bosch-dishwasher",
+    "uniq_id": "bosch_dishwasher_state",
+    "name": "BOSCH Spüler Status",
+    "stat_t": "~/status",
+    "val_tpl": "{{value_json.state}}",
+    "dev": {
+        "ids": [
+            "BOSCH-DISCHWASHER"
+        ],
+        "name": "Bosch Geschirrspüler",
+        "mf": "Bosch",
+        "mdl": "Geschirrspüler SMV4HCX48E/24",
+        "sa": "Küche",
+        "sw": "8342.0.120554",
+        "via_device": "bosch-dishwasher"
+    },
+    "object_id": "bosch_bosch_dishwasher.state",
+    "json_attr_t": "tele/bosch-dishwasher/status"
+}

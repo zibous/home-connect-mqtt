@@ -1,0 +1,201 @@
+
+## ---------------------------------------------
+## HA Discovery device and all sensor settings
+## ---------------------------------------------
+
+items:
+
+  # all binary sensors
+  - name: Spüler eingeschaltet
+    field: power
+    type: binary_sensor
+    schema: binary_sensor_device
+    val_tpl: '{{value_json.power}}'
+    payload_on: 'On'
+    payload_off: 'Off'
+    state_class: 'measurement' 
+    device_class: 'power'
+    enabled: 1
+
+  - name: Spüler Frontüre
+    field: door
+    type: binary_sensor
+    schema: binary_sensor
+    val_tpl: '{{value_json.door}}'
+    payload_on: 'Closed'
+    payload_off: 'Open'
+    device_class: 'door'
+    enabled: 1
+
+  - name: Spüler Wasserleck
+    field: waterleak
+    type: binary_sensor
+    schema: binary_sensor
+    val_tpl: '{{value_json.waterleak}}'
+    payload_on: 'On'
+    payload_off: 'Off'
+    state_class: 'measurement'
+    device_class: 'problem'
+    enabled: 1
+
+  - name: Spüler Wasserdruck
+    field: lowwater
+    type: binary_sensor
+    schema: binary_sensor
+    val_tpl: '{{value_json.lowwater}}'
+    payload_on: 'On'
+    payload_off: 'Off'
+    state_class: 'measurement'
+    device_class: 'problem'
+    enabled: 1
+
+  - name: Spüler Fehler
+    field: error
+    type: binary_sensor
+    schema: binary_sensor
+    val_tpl: '{{value_json.error}}'
+    payload_on: 'On'
+    payload_off: 'Off'
+    state_class: 'measurement'
+    device_class: 'safety'
+    enabled: 1
+
+  - name: Spüler Halb geladen
+    field: halfload
+    type: binary_sensor
+    ic: mdi:dishwasher
+    schema: binary_sensor
+    val_tpl: '{{value_json.halfload}}'
+    payload_on: 'True'
+    payload_off: 'False'
+    state_class: 'measurement'
+    device_class: 'lock'
+    enabled: 1
+
+  - name: Spüler Programm beendet
+    field: programend
+    type: binary_sensor
+    schema: binary_sensor
+    val_tpl: '{{value_json.programend}}'
+    payload_on: 'On'
+    payload_off: 'Off'
+    state_class: 'measurement'
+    device_class: 'opening'
+    enabled: 1
+
+  - name: Spüler Filter
+    field: checkfilter
+    type: binary_sensor
+    schema: binary_sensor
+    val_tpl: '{{value_json.checkfilter}}'
+    payload_on: 'On'
+    payload_off: 'Off'
+    state_class: 'measurement'
+    device_class: 'problem'
+    enabled: 1
+
+    
+
+  # all sensors
+  - name: Spüler Status
+    field: state
+    type: sensor
+    val_tpl: '{{value_json.state}}'
+    schema: sensor_device
+    json_attr_t: 'tele/bosch-dishwasher/status'
+    enabled: 1
+
+  - name: Spüler Programm
+    field: programm
+    type: sensor
+    val_tpl: '{{value_json.programm}}'
+    schema: sensor
+    enabled: 1
+
+  - name: Spüler Laufzeit
+    field: remaining
+    type: sensor
+    val_tpl: '{{value_json.remaining}}'
+    schema: sensor
+    device_class: 'duration'
+    enabled: 1
+
+  - name: Spüler Prozess
+    field: progress
+    type: sensor
+    val_tpl: '{{value_json.progress}}'
+    schema: sensor
+    device_class: 'duration'
+    enabled: 1
+
+  - name: Spüler Aktualisiert
+    field: lastupdate
+    type: sensor
+    val_tpl: '{{value_json.lastupdate}}'
+    ic: mdi:clock-start
+    schema: sensor
+    enabled: 1
+    
+  - name: Spüler Gerät
+    field: device
+    type: sensor
+    val_tpl: '{{value_json.device}}'
+    schema: sensor
+    ent_cat: 'diagnostic'
+    ic: mdi:dishwasher
+    enabled: 1
+    
+  # heartbeat sensor uptime
+  - name: Spüler Service Uptime
+    field: uptime    
+    type: sensor
+    stat_t: "~/heartbeat"
+    val_tpl: '{{value_json.uptime}}'
+    schema: sensor
+    ent_cat: 'diagnostic'
+    device_class: 'duration'
+    enabled: 1
+  
+  - name: Spüler Betriebszeit
+    field: totalrunning
+    type: sensor
+    stat_t: "~/heartbeat"
+    val_tpl: '{{value_json.totalrunning}}'
+    schema: sensor
+    ent_cat: 'diagnostic'
+    device_class: 'duration'
+    enabled: 1
+
+  - name: Spüler Heartbeat
+    field: heartbeattime
+    type: sensor
+    ic: mdi:clock-start
+    stat_t: "~/heartbeat"
+    val_tpl: '{{value_json.timestamp}}'
+    schema: sensor
+    ent_cat: 'diagnostic'
+    enabled: 1
+
+  # - name: Spüler Tabs
+  #   field: tabs
+  #   type: number
+  #   schema: number
+  #   command_topic: "~/heartbeat/tabs"
+  #   stat_t: "~/heartbeat"
+  #   min: 5
+  #   max: 60
+  #   step: 1
+  #   val_tpl: '{{value_json.tabs}}'
+  #   enabled: 1
+
+  # - name: Spüler Tabs
+  #   field: tabsmin
+  #   type: number
+  #   schema: number
+  #   command_topic: "~/heartbeat/tabsmin"
+  #   stat_t: "~/heartbeat"
+  #   min: 1
+  #   max: 10
+  #   step: 1
+  #   val_tpl: '{{value_json.tabsmin}}'
+  #   enabled: 1

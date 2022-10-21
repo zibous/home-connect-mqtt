@@ -1,0 +1,15 @@
+{
+    "~": "tele/bosch-dishwasher",
+    "uniq_id": "bosch_dishwasher_uptime",
+    "name": "BOSCH Spüler Service Uptime",
+    "stat_t": "~/heartbeat",
+    "val_tpl": "{{value_json.uptime}}",
+    "dev": {
+        "ids": [
+            "BOSCH-DISCHWASHER"
+        ]
+    },
+    "object_id": "bosch_bosch_dishwasher.uptime",
+    "ent_cat": "diagnostic",
+    "device_class": "duration"
+}

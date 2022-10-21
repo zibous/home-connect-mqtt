@@ -1,0 +1,23 @@
+{
+    "~": "tele/bosch-dishwasher",
+    "uniq_id": "bosch_dishwasher_waterleak",
+    "name": "BOSCH Spüler Wasserleck",
+    "stat_t": "~/status",
+    "val_tpl": "{{value_json.waterleak}}",
+    "state_class": "measurement",
+    "payload_on": "On",
+    "payload_off": "Off",
+    "dev": {
+        "ids": [
+            "BOSCH-DISCHWASHER"
+        ],
+        "name": "Bosch Geschirrspüler",
+        "mf": "Bosch",
+        "mdl": "Geschirrspüler SMV4HCX48E/24",
+        "sa": "Küche",
+        "sw": "8342.0.120554",
+        "via_device": "bosch-dishwasher"
+    },
+    "object_id": "bosch_bosch_dishwasher.waterleak",
+    "device_class": "problem"
+}

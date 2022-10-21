@@ -1,0 +1,138 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+
+import os
+from os import path
+from datetime import datetime
+import string
+
+
+# -----------------------------------------
+# application settings has to be defined
+# internal used only
+# -----------------------------------------
+APPS_VERSION = '1.1.0'
+APPS_DESCRIPTION = "Data provider smart dishwaser"
+APPS_NAME = 'dishwasher.service'
+APPS_MODE = 'developer'  ## developer enables debugging, production none debug version
+
+DATA_HOSTNAME = os.uname().nodename
+APPS_START_TIME = '1970-01-01T00:00:00'
+
+# -----------------------------------------
+# all folders
+# -----------------------------------------
+APPPATH = os.path.dirname(os.path.dirname(os.path.realpath(__file__)))
+DATADIR = os.path.join(APPPATH, 'data/')
+LOG_DIR = os.path.join(APPPATH, 'logs/')
+CONIG_DIR = os.path.join(APPPATH, 'config/')
+
+# ------------------------------------------------
+# Default Global settings logger for all modules
+# ------------------------------------------------
+LOG_DIR = None
+LOGGER_LEVEL = 100
+LOGGER_LEVEL_SET = "PRODUCTION"
+# switch logging has to be defined
+# LOG_LEVEL = 10  # DEBUG: 10
+# LOG_LEVEL = 20  # INFO: 20
+# LOG_LEVEL = 30  # WARNING: 30
+# LOG_LEVEL = 40  # ERROR: 40
+# LOG_LEVEL = 50  # CRITICAL: 50
+# LOG_LEVEL = 100 # DISABLED: 100
+
+# ------------------------------------------------
+# write log data to file (optional)
+# ------------------------------------------------
+# LOG_DIR = os.path.join(os.path.dirname(__file__), 'logs/')
+LOG_SHOWLINES = False
+
+# -----------------------------------------------
+# date and time formats
+# -----------------------------------------------
+DATEFORMAT = '%Y-%m-%d %H:%M:%S'
+DATEFORMAT_TIMESTAMP = '%Y-%m-%dT%H:%M:%S'
+DATEFORMAT_CURRENT = '%Y-%m-%d %H:%M:%S.%f'
+DATEFORMAT_HOUR = '%H'
+DATEFORMAT_DAY = '%Y-%m-%d'
+DATEFORMAT_MONTH = '%Y-%m'
+DATEFORMAT_YEAR = '%Y'
+TIME_FORMAT = '%H:%M:%S'
+DATEFORMAT_UTC = '%Y-%m-%dT%H:%M:%SZ'
+DATE_FORMAT_HM = '%H:%M'
+DATEFORMAT_YMD = '%Y-%m-%d'
+DATEFORMAT_YM = '%Y-%m'
+DATE_NOW = datetime.now()
+DATE_DEFAULT = DATE_NOW.strftime(DATEFORMAT_TIMESTAMP)
+DATE_DEFAULT_MIN = datetime.min
+now = datetime.now()
+DATE_STATISTICLIST = {
+    "hour": DATEFORMAT_HOUR,
+    "day": DATEFORMAT_DAY,
+    "month": DATEFORMAT_MONTH,
+    "year": DATEFORMAT_YEAR
+}
+
+
+# -----------------------------------------------
+# all for the mqtt brocker
+# disable MQTT Service: set MQTT_HOST = None
+# -----------------------------------------------
+MQTT_HOST = 'REDACTED'
+MQTT_PORT = 18830
+MQTT_CLIENTID = "REDACTED"
+MQTT_AUTH = {"username": "REDACTED", "password": "REDACTED"}
+MQTT_KEEPALIVE = 60
+MQTT_TOPIC_BASE = "tele"
+
+
+# -----------------------------------------------
+# ALL Devices Settings
+# -----------------------------------------------
+DEVICES_FILENAME = "devices.json"
+DEVICES = {
+    "bosch": {
+        "email": "REDACTED",
+        "password": "REDACTED",
+        "012090534580017161": {
+            "hostname": "REDACTED",
+            "installed": "2022-09-06 12:00:00",
+            "taps": 20,
+            "taps_min": 5,
+            "topics": {
+                "OperationState": "state",
+                "DoorState": "door",
+                "RemainingProgramTime": "remaining",
+                "PowerState": "power",
+                "InternalError": "error",
+                "FatalErrorOccured": "error",
+                "ProgramPhase": "programm",
+                "HalfLoad": "halfload",
+                "ProgramFinished": "programend",
+                "ProgramProgress": "progress",
+                "AquaStopOccured": "waterleak",
+                "LowWaterPressure": "lowwater",
+                "CheckFilterSystem": "checkfilter"
+            }
+        }
+    }
+}
+
+# ----------------------------------------------------
+# HA_DISCOVERY
+# ----------------------------------------------------
+HA_DISCOVERY = True
+HA_DISCOVERY_PREFIX = "homeassistant"
+HA_DISCOVERY_SCHEMA = "schemalist.yaml"
+HA_DISCOVERY_DISCOVERY = "discovery.yaml"
+HA_DISCOVERY_MODE = "developer"
+ATTRIBUTION = 'Data dishwasher.service provided by Peter Siebler'
+
+# ----------------------------------------------------
+# helper methods
+# ----------------------------------------------------
+def getTimestamp() -> string:
+    return datetime.now().strftime(DATEFORMAT_TIMESTAMP)
+
+def getDate() -> string:
+    return datetime.now().strftime(DATEFORMAT)

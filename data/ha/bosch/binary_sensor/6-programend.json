@@ -1,0 +1,17 @@
+{
+    "~": "tele/bosch-dishwasher",
+    "uniq_id": "bosch_dishwasher_programend",
+    "name": "BOSCH Spüler Programm beendet",
+    "stat_t": "~/status",
+    "val_tpl": "{{value_json.programend}}",
+    "payload_on": "On",
+    "payload_off": "Off",
+    "state_class": "measurement",
+    "dev": {
+        "ids": [
+            "BOSCH-DISCHWASHER"
+        ]
+    },
+    "object_id": "bosch_bosch_dishwasher.programend",
+    "device_class": "opening"
+}

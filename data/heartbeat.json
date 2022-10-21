@@ -1,0 +1,11 @@
+{
+	"state": "on",
+	"device": "dishwasher",
+	"uptime": "14 hours, 12 minutes, 26 seconds",
+	"totalrunning": "43 days, 22 hours, 54 minutes, 21 seconds",
+	"tabs": 20,
+	"tabsmin": 5,
+	"timestamp": "2022-10-20T10:54:21",
+	"dataprovider": "zeusus",
+	"attribution": "Data dishwasher.service provided by Peter Siebler"
+}

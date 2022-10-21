@@ -1,0 +1,18 @@
+{
+    "~": "tele/bosch-dishwasher",
+    "uniq_id": "bosch_dishwasher_halfload",
+    "name": "BOSCH Spüler Halb geladen",
+    "stat_t": "~/status",
+    "val_tpl": "{{value_json.halfload}}",
+    "payload_on": "True",
+    "payload_off": "False",
+    "dev": {
+        "ids": [
+            "BOSCH-DISCHWASHER"
+        ]
+    },
+    "object_id": "bosch_bosch_dishwasher.halfload",
+    "device_class": "lock",
+    "state_class": "measurement",
+    "ic": "mdi:dishwasher"
+}

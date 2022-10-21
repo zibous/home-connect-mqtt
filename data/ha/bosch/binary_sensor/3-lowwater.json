@@ -1,0 +1,17 @@
+{
+    "~": "tele/bosch-dishwasher",
+    "uniq_id": "bosch_dishwasher_lowwater",
+    "name": "BOSCH Spüler Wasserdruck",
+    "stat_t": "~/status",
+    "val_tpl": "{{value_json.lowwater}}",
+    "payload_on": "On",
+    "payload_off": "Off",
+    "state_class": "measurement",
+    "dev": {
+        "ids": [
+            "BOSCH-DISCHWASHER"
+        ]
+    },
+    "object_id": "bosch_bosch_dishwasher.lowwater",
+    "device_class": "problem"
+}

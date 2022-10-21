@@ -1,0 +1,13 @@
+{
+    "~": "tele/bosch-dishwasher",
+    "uniq_id": "bosch_dishwasher_timestamp",
+    "name": "BOSCH Spüler Zeit",
+    "stat_t": "~/status",
+    "val_tpl": "{{value_json.timestamp}}",
+    "dev": {
+        "ids": [
+            "BOSCH-DISCHWASHER"
+        ]
+    },
+    "object_id": "bosch_bosch_dishwasher.timestamp"
+}

@@ -1,0 +1,15 @@
+{
+    "~": "tele/bosch-dishwasher",
+    "uniq_id": "bosch_dishwasher_device",
+    "name": "BOSCH Spüler Gerät",
+    "stat_t": "~/status",
+    "val_tpl": "{{value_json.device}}",
+    "dev": {
+        "ids": [
+            "BOSCH-DISCHWASHER"
+        ]
+    },
+    "object_id": "bosch_bosch_dishwasher.device",
+    "ic": "mdi:dishwasher",
+    "ent_cat": "diagnostic"
+}

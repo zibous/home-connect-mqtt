@@ -1,0 +1,21 @@
+[Unit]
+# cp template_service.service  /etc/systemd/system/home-connect-mqtt.service
+# systemctl start | stop | status | enable | disable  home-connect-mqtt
+# systemctl status home-connect-mqtt
+
+Description=Smarthome service dishwasher
+Documentation=https://github.com/zibous/home-connect-mqtt
+After=mosquitto.service network.target
+
+[Service]
+Type=simple
+WorkingDirectory=/app/home-connect-mqtt/
+ExecStart=/usr/bin/python3 /app/home-connect-mqtt/app.py
+StandardOutput=null
+
+StandardError=journal
+Environment=PYTHONUNBUFFERED=true
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

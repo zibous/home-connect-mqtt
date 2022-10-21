@@ -1,0 +1,14 @@
+{
+    "~": "tele/bosch-dishwasher",
+    "uniq_id": "bosch_dishwasher_progress",
+    "name": "BOSCH Spüler Prozess",
+    "stat_t": "~/status",
+    "val_tpl": "{{value_json.progress}}",
+    "dev": {
+        "ids": [
+            "BOSCH-DISCHWASHER"
+        ]
+    },
+    "object_id": "bosch_bosch_dishwasher.progress",
+    "device_class": "duration"
+}

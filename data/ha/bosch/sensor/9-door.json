@@ -1,0 +1,13 @@
+{
+    "~": "tele/bosch-dishwasher",
+    "uniq_id": "bosch_dishwasher_door",
+    "name": "BOSCH Spüler Frontüre",
+    "stat_t": "~/status",
+    "val_tpl": "{{value_json.door}}",
+    "dev": {
+        "ids": [
+            "BOSCH-DISCHWASHER"
+        ]
+    },
+    "object_id": "bosch_bosch_dishwasher.door"
+}

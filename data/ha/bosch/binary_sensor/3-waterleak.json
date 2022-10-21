@@ -1,0 +1,17 @@
+{
+    "~": "tele/bosch-dishwasher",
+    "uniq_id": "bosch_dishwasher_waterleak",
+    "name": "BOSCH Spüler Wasserleck",
+    "stat_t": "~/status",
+    "val_tpl": "{{value_json.waterleak}}",
+    "payload_on": "On",
+    "payload_off": "Off",
+    "dev": {
+        "ids": [
+            "BOSCH-DISCHWASHER"
+        ]
+    },
+    "object_id": "bosch_bosch_dishwasher.waterleak",
+    "device_class": "problem",
+    "state_class": "measurement"
+}
