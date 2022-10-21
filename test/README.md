@@ -140,7 +140,7 @@ This tool will establish websockets to the local devices and transform their mes
 2022/10/21 13:18:04.511  - DEBUG: Save ha-discovery item:/app/home-connect-mqtt/data/ha/bosch/sensor/17-heartbeattime.json
 2022/10/21 13:18:04.511  - INFO: Finished HA Discovery for bosch
 2022/10/21 13:18:05.512  - INFO: Start get data from device: BOSCH-Dishwasher-012090517380017161
-2022/10/21 13:18:05.513  - INFO: Connect to device: bosch-dishwasher.siebler.home, Key: ph8qI3DtPFoaEKFPhMOb0UJv7ISZ9j8irwbKFSQm0HU
+2022/10/21 13:18:05.513  - INFO: Connect to device: ********* , Key: ************
 2022/10/21 13:18:05.513  - INFO: Publish LWT State for bosch dishwasher
 2022/10/21 13:18:05.514  - DEBUG: Publish LWT Topic ONLINE: tele/bosch-dishwasher/LWT
 2022/10/21 13:18:06.019  - DEBUG: Start Publish Heartbeat for BOSCH
