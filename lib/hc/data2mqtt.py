@@ -183,7 +183,7 @@ def client_connect(device) -> bool:
 
                 ws = HCSocket(_hostname, device["key"], device.get("iv", None))
                 dev = HCDevice(ws, device.get("features", None))
-
+                ws.debug = False
                 if _debugMode:
                     ws.debug = _debugMode
 
@@ -195,43 +195,49 @@ def client_connect(device) -> bool:
 
                     if msg is None:
                         break
-                    
+
                     if len(msg) > 0:
                         log.debug("Message o.k {} ".format(_hostname))
-                        
+
+                    if app_config.MQTT_HOST and _debugMode:
+                        _topic = "{}/{}-{}/message".format(app_config.MQTT_TOPIC_BASE, _brandname, _devicename)
+                        _payload = json.dumps(msg)
+                        log.debug("Publish new message data to topic {} ".format(_topic))
+                        publish.single(_topic,
+                                       payload=_payload,
+                                       qos=0,
+                                       retain=True,
+                                       hostname=app_config.MQTT_HOST,
+                                       port=app_config.MQTT_PORT,
+                                       client_id=app_config.MQTT_CLIENTID,
+                                       keepalive=60,
+                                       auth=app_config.MQTT_AUTH)
+
                     update = False
-
                     for topic in topics:
-
                         value = msg.get(topic, None)
-
                         if value is None:
+                            log.debug("No value found for topic: {}".format(topic))
                             continue
-
-                        if value == True:
-                            value = "True"
-                        if value == False:
-                            value = "False"
-
+                        # mapping incomming topic value to configuration mapped topic
                         new_topic = topics[topic]
-
                         if new_topic == "remaining":
                             state["remainingseconds"] = value
                             value = "%d:%02d" % (value / 60 / 60, (value / 60) % 60)
-
+                        # set the new value for the topic
                         state[new_topic] = value
-
                         update = True
 
                     if not update:
                         continue
 
-                    # calc the taps (optional)
+                    # new topic value present, so we can do the rest
                     if ("taps" in _device_config) and ("taps_min" in _device_config):
+                        # calc the taps (optional)
                         state["tapscounter"] = 1
                         state["tapsorder"] = __calcTabsOrder__({"state": state, "taps": _device_config["taps"], "taps_min": _device_config["taps_min"]})
 
-                    # device additional attributes
+                    # add device additional attributes
                     state["device"] = device["host"]
                     state["lastupdate"] = app_config.getDate()
                     state["dataprovider"] = os.uname().nodename
@@ -251,7 +257,9 @@ def client_connect(device) -> bool:
                                        keepalive=60,
                                        auth=app_config.MQTT_AUTH)
                     else:
-                        log.debug("Mqtt disabled, skipping...")
+                        # just for testcase, log the payload to the console
+                        log.debug("Mqtt disabled, skip publish to mqtt.")
+                        log.debug("Payload Data: {}".format(state))
 
             except Exception as e:
                 log.error(f"{__name__}: connect Error: {str(e)}, line {sys.exc_info()[-1].tb_lineno}")
@@ -322,7 +330,7 @@ def runMqttService(brand) -> bool:
         try:
             while True:
                 time.sleep(1)
-                
+
         except KeyboardInterrupt:
             pass
         finally:

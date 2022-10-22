@@ -13,7 +13,7 @@ items:
     val_tpl: '{{value_json.power}}'
     payload_on: 'On'
     payload_off: 'Off'
-    state_class: 'measurement' 
+    state_class: 'measurement'
     device_class: 'power'
     enabled: 1
 
@@ -22,8 +22,8 @@ items:
     type: binary_sensor
     schema: binary_sensor
     val_tpl: '{{value_json.door}}'
-    payload_on: 'Closed'
-    payload_off: 'Open'
+    payload_on: 'Open'
+    payload_off: 'Closed'
     device_class: 'door'
     enabled: 1
 
@@ -66,8 +66,8 @@ items:
     ic: mdi:dishwasher
     schema: binary_sensor
     val_tpl: '{{value_json.halfload}}'
-    payload_on: 'True'
-    payload_off: 'False'
+    payload_on: True
+    payload_off: False
     state_class: 'measurement'
     device_class: 'lock'
     enabled: 1
@@ -80,7 +80,7 @@ items:
     payload_on: 'On'
     payload_off: 'Off'
     state_class: 'measurement'
-    device_class: 'opening'
+    device_class: 'problem'
     enabled: 1
 
   - name: Spüler Filter
@@ -94,7 +94,7 @@ items:
     device_class: 'problem'
     enabled: 1
 
-    
+
 
   # all sensors
   - name: Spüler Status
@@ -135,7 +135,7 @@ items:
     ic: mdi:clock-start
     schema: sensor
     enabled: 1
-    
+
   - name: Spüler Gerät
     field: device
     type: sensor
@@ -144,10 +144,19 @@ items:
     ent_cat: 'diagnostic'
     ic: mdi:dishwasher
     enabled: 1
-    
+
   # heartbeat sensor uptime
+  - name: Spüler Sessions
+    field: sessions
+    type: sensor
+    ic: mdi:clock-start
+    val_tpl: '{{value_json.sessions}}'
+    schema: sensor
+    ent_cat: 'diagnostic'
+    enabled: 1
+
   - name: Spüler Service Uptime
-    field: uptime    
+    field: uptime
     type: sensor
     stat_t: "~/heartbeat"
     val_tpl: '{{value_json.uptime}}'
@@ -155,7 +164,7 @@ items:
     ent_cat: 'diagnostic'
     device_class: 'duration'
     enabled: 1
-  
+
   - name: Spüler Betriebszeit
     field: totalrunning
     type: sensor

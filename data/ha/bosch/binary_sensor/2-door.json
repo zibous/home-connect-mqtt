@@ -4,8 +4,8 @@
     "name": "BOSCH Spüler Frontüre",
     "stat_t": "~/status",
     "val_tpl": "{{value_json.door}}",
-    "payload_on": "Closed",
-    "payload_off": "Open",
+    "payload_on": "Open",
+    "payload_off": "Closed",
     "dev": {
         "ids": [
             "BOSCH-DISCHWASHER"

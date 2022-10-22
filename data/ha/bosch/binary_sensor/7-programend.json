@@ -12,6 +12,6 @@
         ]
     },
     "object_id": "bosch_bosch_dishwasher.programend",
-    "device_class": "opening",
+    "device_class": "problem",
     "state_class": "measurement"
 }

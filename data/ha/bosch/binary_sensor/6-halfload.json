@@ -4,8 +4,8 @@
     "name": "BOSCH Spüler Halb geladen",
     "stat_t": "~/status",
     "val_tpl": "{{value_json.halfload}}",
-    "payload_on": "True",
-    "payload_off": "False",
+    "payload_on": true,
+    "payload_off": false,
     "dev": {
         "ids": [
             "BOSCH-DISCHWASHER"

@@ -1,0 +1,15 @@
+{
+    "~": "tele/bosch-dishwasher",
+    "uniq_id": "bosch_dishwasher_sessions",
+    "name": "BOSCH Spüler Sessions",
+    "stat_t": "~/status",
+    "val_tpl": "{{value_json.sessions}}",
+    "dev": {
+        "ids": [
+            "BOSCH-DISCHWASHER"
+        ]
+    },
+    "object_id": "bosch_bosch_dishwasher.sessions",
+    "ic": "mdi:clock-start",
+    "ent_cat": "diagnostic"
+}
