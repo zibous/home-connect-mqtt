@@ -1,5 +1,19 @@
+
 # Python application to talk to Home Connect appliances over the local network (no cloud required)
 
+[![License][license-shield]][license]
+![Python](https://img.shields.io/badge/python-3.11-blue.svg)
+[![Open in Visual Studio Code][open-in-vscode-shield]][open-in-vscode]
+[![Support author][donate-me-shield]][donate-me]
+
+[license-shield]: https://img.shields.io/static/v1?label=License&message=MIT&color=orange&logo=license
+[license]: https://opensource.org/licenses/MIT
+
+[open-in-vscode-shield]: https://img.shields.io/static/v1?label=+&message=Open+in+VSCode&color=blue&logo=visualstudiocode
+[open-in-vscode]: https://github.com/zibous/home-connect-mqtt
+
+[donate-me-shield]: https://img.shields.io/static/v1?label=+&color=orange&message=Buy+me+a+coffee
+[donate-me]: https://www.buymeacoff.ee/zibous
 
 
 ## No-cloud local control Bosch Home Connect Devices
